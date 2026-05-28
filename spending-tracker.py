@@ -1,15 +1,6 @@
 from datetime import datetime as dt
 from decimal import Decimal
-"""
-print("***************************************************************")
-intro = Hi! Im your new spending tracker! I will help you stay under a budget you set based 
-on a series of questions. With the information you provide, I will be able to help you stick to 
-your financial goals. I will also provide a monthly overview of what you spent and where, helping
-you further monitor your spending habits.
 
-print(intro)
-start = input("Ready to start? [Y/N]: ")
-"""
 #Prints date, with formatting for accurate suffixes
 def print_date():
     if(int('%d' == 1) or int('%d' == 21) or  int('%d' == 31)): 
@@ -50,27 +41,24 @@ def budget_calculator(date, payday, pay_freq, budget_length, budget_amt, weekly_
    
     monthly_total += money_spent
    
-    print(f"Today is {date}.")
-    print(f"You have spent ${weekly_total} of your ${budget_amt} so far. You have ${budget_amt - weekly_total} left.")
     return weekly_total, monthly_total
 
 
-"""
+print("***************************************************************")
+intro = """Hi! Im your new spending tracker! I will help you stay under a budget you set based 
+on a series of questions. With the information you provide, I will be able to help you stick to 
+your financial goals. I will also provide a monthly overview of what you spent and where, helping
+you further monitor your spending habits."""
+
+print(intro)
+start = input("Ready to start? [Y/N]: ")
+
 current_user_data = user_data()
 current_weekly_total = 0
 current_monthly_total = 0
-dates = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-for i in range (0, 6):
-    current_weekly_total, current_monthly_total = budget_calculator(dates[i],**current_user_data, weekly_total = current_weekly_total, monthly_total = current_monthly_total)
-"""
-    
-    
 
+current_weekly_total, current_monthly_total = budget_calculator(**current_user_data, weekly_total = current_weekly_total, monthly_total = current_monthly_total)
 
-
-
-
-"""
 if start == "Y" or start == "y":
     print("***************************************************************")
     today_str = dt.now().strftime('%A') + ", " + dt.now().strftime('%B %d')
