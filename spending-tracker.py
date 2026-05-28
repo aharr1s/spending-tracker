@@ -34,21 +34,35 @@ def user_data():
     user_data['payday'] = pay_date
     user_data['budget_amt'] = budget
 
-    #print(user_data)
+    print(user_data)
+    return user_data
     #TO DO: edge case logic           
 
 #Computes budget as user inputs values, assuming user inputs one large sum at the end of the day
-def budget_calculator(payday, budget_length, budget_amt):
+def budget_calculator(date, payday, pay_freq, budget_length, budget_amt, weekly_total, monthly_total):
     money_spent = Decimal(input("Enter amount spent: "))
-
-    if (dt.now().strftime('%d').equals(payday)):
+    
+    if (date == payday):
         weekly_total = 0
         weekly_total += money_spent
     else:
         weekly_total += money_spent
-        monthly_total += money_spent
+   
+    monthly_total += money_spent
+   
+    print(f"Today is {date}.")
+    print(f"You have spent ${weekly_total} of your ${budget_amt} so far. You have ${budget_amt - weekly_total} left.")
+    return weekly_total, monthly_total
 
 
+"""
+current_user_data = user_data()
+current_weekly_total = 0
+current_monthly_total = 0
+dates = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+for i in range (0, 6):
+    current_weekly_total, current_monthly_total = budget_calculator(dates[i],**current_user_data, weekly_total = current_weekly_total, monthly_total = current_monthly_total)
+"""
     
     
 
